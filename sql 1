@@ -1,0 +1,58 @@
+use startersql;
+create table user(
+id int auto_increment primary key,
+ name varchar(100) Not NULL,
+ email varchar(100) unique not null,
+ gender ENUM('Male','Female','other'),
+ date_of_birth Date,
+ creted_at Timestamp Default Current_timestamp
+ );
+-- Select  * from  ayush;
+rename table  user to ayush;
+alter table ayush add column is_active boolean default true;
+select * from ayush;
+alter table ayush drop column is_active;
+alter table ayush modify column email varchar(100) after id;
+alter table ayush modify column date_of_birth datetime first ;
+insert into ayush (name , email , gender, date_of_birth) values
+('drishti', 'drishti@1212','female','2003-11-21');
+-- using where query 
+-- select * from users where gender = 'female';
+-- select * from users where date_of_birth < '1995-09-09';
+-- select * from users where date_of_birth between  '1995-09-09' and '2000-09-09';
+-- select * from users where gender in ('others');
+-- select * from users where gender='female' and salary>'70000';
+-- select * from users where gender ='male' or salary > '65000' order by  date_of_birth desc limit 15;
+--  select * from users order by salary desc;
+update users set date_of_birth = '1997-04-02' where id = 153;
+select * from users;
+update users set email = 'ombsdk@example.com' where id = 153;
+ select * from users where salary > '60000 ';
+ select * from users  name order by salary desc;
+ update users set salary = id + 10000
+ where salary  < 60000;
+--  DELETE FROM users where salary<40000;
+delete from users where id = 152;
+select* from users;
+alter table users add constraint unique_email unique(email) ;
+-- alter table users add constraint chk_dob check(date_of_birth > '1920-01-01');
+select count(*) from users;
+select count(*) from users where gender = 'feMale';
+select min(salary)as min_salary, max(salary) as max_salary from users;
+select sum(salary) as total from users;
+select avg(salary) as total from users;
+ select name,id,gender,avg(salary) as avg_salary from users group by id;
+ select gender, avg(salary) as avg_slary from users group by gender;
+ 
+ select id, gender, name,Length(name) as name_len from users;
+ select id, gender, upper(name) as upper from users; 
+  select id, gender, lower(name) as lower, concat(lower(name),'23123') as username, year(date_of_birth) as yob,length(name) as name_len from users;
+  select name , datediff(curdate(), date_of_birth) as days from users;
+  select salary,
+  round(salary) as rounded,
+  floor(salary) as floored,
+  ceil(salary) as ceiled
+  from users;
+  select id, mod(id,153) as remainder from users;
+  
+  drop database ecommerce;
