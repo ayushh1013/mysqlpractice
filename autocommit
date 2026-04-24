@@ -1,0 +1,5 @@
+select * from users;
+use startersql;
+set autocommit = 1; 
+delete from users where id = 153;
+rollback;
