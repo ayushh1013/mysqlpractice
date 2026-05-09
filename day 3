@@ -1,0 +1,19 @@
+-- union in sql
+select * from admin_users;
+select * from users;
+select name from users
+union all
+select name from admin_users;
+
+-- join
+
+select name, 'user' as role  from users
+union all
+select name, 'admin' as role  from admin_users
+order by name;
+
+
+select email, name,date_of_birth, 'user' as role  from users
+union all
+select email, name, date_of_birth,'admin' as role  from admin_users
+order by date_of_birth;
