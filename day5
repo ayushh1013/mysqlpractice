@@ -1,0 +1,13 @@
+-- self join
+
+Alter table users
+add column referred_bt_id int;
+update users set referred_bt_id = 1 where id in(2,34,5,6,152,153,154);
+update users set referred_bt_id = 2 where id = 154;
+
+select
+a.id,
+a.name as user_name,
+b.name as referred_bt_name
+from users a 
+left join users b on a.referred_bt_id = b.id;
