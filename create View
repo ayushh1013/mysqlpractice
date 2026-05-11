@@ -1,0 +1,5 @@
+create view rich_users as
+select * from users where salary > 70000;
+update users set salary = 800000 where id=153;
+update users set name = "Drishti"  where id=152;
+select * from rich_users;
