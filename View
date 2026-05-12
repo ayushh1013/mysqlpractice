@@ -1,0 +1,16 @@
+# view
+create view rich_users as
+select * from users where salary > 70000;
+update users set salary = 800000 where id=153;
+update users set name = "Drishti"  where id=152;
+select * from rich_users;
+
+
+#indexes
+
+show indexes in users;
+create 	index idx_email on users(gender);
+create index idx_gender_salary on users(gender,salary);
+
+select * from users
+where gender = "female" and salary > 70000;
