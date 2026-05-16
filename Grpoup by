@@ -1,0 +1,8 @@
+-- Group By
+select gender, avg(salary) as 'sanjay',count(*) as 'count' from users group by gender;
+
+-- Having clause
+
+select gender as 'Gender', avg(salary) as 'Average Salary' , count(*) as 'count'
+from users where id < 5000 group by gender
+Having avg(salary)> 6100; 
